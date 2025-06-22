@@ -98,13 +98,45 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%),
-                linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: 
+      linear-gradient(180deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 30%, transparent 60%),
+      radial-gradient(ellipse at top center, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(255, 215, 0, 0.1) 100%);
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(90deg, 
+      rgba(255, 215, 0, 1) 0%, 
+      rgba(255, 193, 7, 1) 25%, 
+      rgba(255, 235, 59, 1) 50%, 
+      rgba(255, 193, 7, 1) 75%, 
+      rgba(255, 215, 0, 1) 100%);
+    box-shadow: 
+      0 0 20px rgba(255, 215, 0, 0.8),
+      0 0 40px rgba(255, 215, 0, 0.6),
+      0 0 60px rgba(255, 215, 0, 0.4);
+    z-index: 1000;
+    animation: glow-strip 3s ease-in-out infinite alternate;
   }
 }
 
-/* Glowing effects */
+/* Enhanced Glowing effects with black glass and red accents */
 @layer utilities {
+  .glow-yellow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+  }
+  
+  .glow-red {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.4), 0 0 40px rgba(220, 38, 38, 0.2);
+  }
+  
   .glow-blue {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
   }
@@ -121,30 +153,99 @@
     box-shadow: 0 0 20px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.1);
   }
   
-  .glow-text {
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
+  .glow-text-yellow {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
   }
   
-  .glow-card {
-    background: rgba(255, 255, 255, 0.95);
+  .glow-text-red {
+    text-shadow: 0 0 10px rgba(220, 38, 38, 0.6), 0 0 20px rgba(220, 38, 38, 0.4);
+  }
+  
+  .glass-card {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4), 
+      0 0 20px rgba(255, 215, 0, 0.2),
+      inset 0 1px 0 rgba(255, 215, 0, 0.1);
+  }
+  
+  .glass-tab {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.3), 
+      0 0 10px rgba(255, 215, 0, 0.1);
+  }
+  
+  .glass-button {
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 
-                0 0 20px rgba(59, 130, 246, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(220, 38, 38, 0.4);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.3),
+      0 0 15px rgba(220, 38, 38, 0.3);
   }
   
-  .pulse-glow {
-    animation: pulse-glow 2s infinite;
+  .glass-button:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.6);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.4),
+      0 0 25px rgba(220, 38, 38, 0.5);
   }
   
-  @keyframes pulse-glow {
+  .pulse-glow-yellow {
+    animation: pulse-glow-yellow 2s infinite;
+  }
+  
+  .pulse-glow-red {
+    animation: pulse-glow-red 2s infinite;
+  }
+  
+  .floating-orb {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes glow-strip {
+    0% {
+      box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.8),
+        0 0 40px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.4);
+    }
+    100% {
+      box-shadow: 
+        0 0 30px rgba(255, 215, 0, 1),
+        0 0 60px rgba(255, 215, 0, 0.8),
+        0 0 90px rgba(255, 215, 0, 0.6);
+    }
+  }
+  
+  @keyframes pulse-glow-yellow {
     0%, 100% {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
     }
     50% {
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
     }
+  }
+  
+  @keyframes pulse-glow-red {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.4), 0 0 40px rgba(220, 38, 38, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(220, 38, 38, 0.6), 0 0 60px rgba(220, 38, 38, 0.4);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(120deg); }
+    66% { transform: translateY(10px) rotate(240deg); }
   }
 }
 
@@ -152,6 +253,7 @@
 @media (display-mode: standalone) {
   body {
     user-select: none; /* Prevent text selection for native app feel */
+    padding-top: 8px; /* Account for the glowing strip */
   }
   
   /* Add padding for safe areas on mobile devices */
@@ -164,7 +266,7 @@
 /* Offline indicator styles */
 .offline-indicator {
   position: fixed;
-  top: 0;
+  top: 8px; /* Account for glowing strip */
   left: 0;
   right: 0;
   background: linear-gradient(90deg, #dc2626, #ef4444);
@@ -172,7 +274,7 @@
   text-align: center;
   padding: 0.5rem;
   font-size: 0.875rem;
-  z-index: 1000;
+  z-index: 999;
   box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
 }
 
@@ -184,14 +286,22 @@
     transition-duration: 0.01ms !important;
   }
   
-  .pulse-glow {
+  .pulse-glow-yellow,
+  .pulse-glow-red,
+  .floating-orb {
+    animation: none !important;
+  }
+  
+  body::before {
     animation: none !important;
   }
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .card {
+  .glass-card,
+  .glass-tab,
+  .glass-button {
     border: 2px solid currentColor;
   }
 }
